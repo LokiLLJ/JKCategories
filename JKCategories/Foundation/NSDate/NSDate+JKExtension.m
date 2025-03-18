@@ -378,6 +378,9 @@
 
 + (NSDate *)jk_dateWithString:(NSString *)string format:(NSString *)format {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *zh_CNLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    inputFormatter.locale = zh_CNLocale;
+    inputFormatter.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
     [inputFormatter setDateFormat:format];
     
     NSDate *date = [inputFormatter dateFromString:string];
