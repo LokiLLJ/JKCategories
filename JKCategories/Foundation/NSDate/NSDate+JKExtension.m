@@ -370,8 +370,8 @@
 - (NSString *)jk_stringWithFormat:(NSString *)format {
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     NSLocale *zh_CNLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-    inputFormatter.locale = zh_CNLocale;
-    inputFormatter.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
+    outputFormatter.locale = zh_CNLocale;
+    outputFormatter.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
     [outputFormatter setDateFormat:format];
     
     NSString *retStr = [outputFormatter stringFromDate:self];
