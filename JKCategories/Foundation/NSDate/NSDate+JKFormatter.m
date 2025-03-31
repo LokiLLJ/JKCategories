@@ -114,10 +114,14 @@
 {
     NSDate *chosenDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *zh_CNLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    formatter.locale = zh_CNLocale;
+    formatter.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
     [formatter setDateFormat:format];
     NSString *date = [formatter stringFromDate:chosenDate];
     return date;
 }
+
 + (NSDate *)jk_dateWithSecondsFromNow:(NSInteger)seconds {
     NSDate *date = [NSDate date];
     NSDateComponents *components = [NSDateComponents new];
@@ -131,6 +135,9 @@
 - (NSString *)jk_dateWithFormat:(NSString *)format
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *zh_CNLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    formatter.locale = zh_CNLocale;
+    formatter.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
     [formatter setDateFormat:format];
     NSString *date = [formatter stringFromDate:self];
     return date;
