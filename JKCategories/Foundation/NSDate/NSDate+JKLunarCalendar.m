@@ -61,10 +61,14 @@
 
 + (NSString *)jk_currentWeekWithDateString:(NSString*)datestring{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *zh_CNLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    formatter.locale = zh_CNLocale;
+    formatter.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *date = [formatter dateFromString:datestring];
     return [self jk_currentWeek:date];
 }
+
 + (NSString *)jk_currentWeek:(NSDate*)date{
     NSArray *weeks =@[@"星期",@"星期日",@"星期一", @"星期二", @"星期三",@"星期四", @"星期五", @"星期六"];
     
